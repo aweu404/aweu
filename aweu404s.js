@@ -1,4 +1,4 @@
-<script>
+
 //mouse
 //Circling text trail- Tim Tilton
 //Website: http://www.tempermedia.com/
@@ -7,9 +7,10 @@ function cursor_text_circle(){
 // your message here
 var msg='AWEU404'.split('').reverse().join('');
 
-var font='Share Tech Mono';
+var font='Verdana,Arial';
 var size=3; // up to seven
-var color='black';
+var color='red';
+
 // This is not the rotation speed, its the reaction speed, keep low!
 // Set this to 1 for just plain rotation w/out drag
 var speed=.3;
@@ -398,4 +399,3 @@ else{
 document.onmousedown=disableselect
 document.onmouseup=reEnable
 }
-</script>

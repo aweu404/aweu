@@ -10,7 +10,6 @@ var msg='AWEU404'.split('').reverse().join('');
 var font='Share Tech Mono';
 var size=3; // up to seven
 var color='black';
-var textshadow=' 0 0 6px aqua, 5px 0px 8px aqua';
 // This is not the rotation speed, its the reaction speed, keep low!
 // Set this to 1 for just plain rotation w/out drag
 var speed=.3;

@@ -1,3 +1,4 @@
+
 // <![CDATA[
 var colours=new Array('#f00', '#f06', '#f0f', '#f6f', '#f39', '#f9c'); // colours of the hearts
 var minisize=16; // smallest size of hearts in pixels
@@ -173,82 +174,3 @@ function createDiv(height, width) {
   return (div);
 }
 // ]]>
-</script>
-
-        <script language=JavaScript>
-        <!--
-       //Disable right click script III- By SXT0
-       //For full source code, visit http://www.samuelscouter.blogspot.com
-       var message="";
-       ///////////////////////////////////
-       function clickIE() {if (document.all) {(message);return false;}}
-       function clickNS(e) {if
-       (document.layers||(document.getElementById&&!document.all)) {
-       if (e.which==2||e.which==3) {(message);return false;}}}
-       if (document.layers)
-       {document.captureEvents(Event.MOUSEDOWN)
-       ;document.onmousedown=clickNS;}
-       else{document.onmouseup=clickNS;document.oncontextmenu=clickIE;}
-       document.oncontextmenu=new Function("return false")
-       // -->
-        </script>	<div id="flake0" style="position: absolute; top: 44px; left: 327.194px; width: 1px; height: 1px; background-color: rgb(255, 255, 255); font-
-
-size: 1px;"></div><div id="flake1" style="position: absolute; top: 138px; left: 1325.03px; width: 1px; height: 1px; background-color: rgb(255, 255, 255); font-size: 
-
-1px;"></div><div id="flake2" style="position: absolute; top: 139px; left: 163.556px; width: 1px; height: 1px; background-color: rgb(255, 255, 255); font-size: 
-
-1px;"></div><div id="flake3" style="position: absolute; top: 337px; left: 838.45px; width: 2px; height: 2px; background-color: rgb(255, 255, 255); font-size: 
-
-2px;"></div><div id="flake4" style="position: absolute; top: 140px; left: 270.234px; width: 1px; height: 1px; background-color: rgb(255, 255, 255); font-size: 
-
-1px;"></div><div id="flake5" style="position: absolute; top: 140px; left: 643.786px; width: 2px; height: 2px; background-color: rgb(255, 255, 255); font-size: 
-
-2px;"></div><div id="flake6" style="position: absolute; top: 95px; left: 644.323px; width: 2px; height: 2px; background-color: rgb(255, 255, 255); font-size: 
-
-2px;"></div><div id="flake7" style="position: absolute; top: 277px; left: 1084.88px; width: 1px; height: 1px; background-color: rgb(255, 255, 255); font-size: 
-
-1px;"></div><div id="flake8" style="position: absolute; top: -7px; left: 383.259px; width: 1px; height: 1px; background-color: rgb(255, 255, 255); font-size: 
-
-1px;"></div><div id="flake9" style="position: absolute; top: 175px; left: 703.481px; width: 1px; height: 1px; background-color: rgb(255, 255, 255); font-size: 
-
-1px;"></div><div id="flake10" style="position: absolute; top: 369px; left: 1173.29px; width: 1px; height: 1px; background-color: rgb(255, 255, 255); font-size: 
-
-1px;"></div><div id="flake11" style="position: absolute; top: 244px; left: 611.084px; width: 1px; height: 1px; background-color: rgb(255, 255, 255); font-size: 
-
-1px;"></div><div id="flake12" style="position: absolute; top: -10px; left: 530px; width: 1px; height: 1px; background-color: rgb(255, 255, 255); font-size: 
-
-1px;"></div><div id="flake13" style="position: absolute; top: 143px; left: 976.289px; width: 1px; height: 1px; background-color: rgb(255, 255, 255); font-size: 
-
-1px;"></div><div id="flake14" style="position: absolute; top: 298px; left: 717.091px; width: 2px; height: 2px; background-color: rgb(255, 255, 255); font-size: 
-
-2px;"></div><div id="flake15" style="position: absolute; top: 38px; left: 1201.79px; width: 2px; height: 2px; background-color: rgb(255, 255, 255); font-size: 
-
-2px;"></div><div id="flake16" style="position: absolute; top: 77px; left: 717.786px; width: 2px; height: 2px; background-color: rgb(255, 255, 255); font-size: 
-
-2px;"></div><div id="flake17" style="position: absolute; top: 122px; left: 1018.14px; width: 2px; height: 2px; background-color: rgb(255, 255, 255); font-size: 
-
-2px;"></div><div id="flake18" style="position: absolute; top: 223px; left: 818.955px; width: 2px; height: 2px; background-color: rgb(255, 255, 255); font-size: 
-
-2px;"></div><div id="flake19" style="position: absolute; top: 105px; left: 856.835px; width: 2px; height: 2px; background-color: rgb(255, 255, 255); font-size: 
-
-2px;"></div><div id="flake20" style="position: absolute; top: 237px; left: 1066.98px; width: 2px; height: 2px; background-color: rgb(255, 255, 255); font-size: 
-
-2px;"></div><div id="flake21" style="position: absolute; top: 206px; left: 813.31px; width: 2px; height: 2px; background-color: rgb(255, 255, 255); font-size: 
-
-2px;"></div><div id="flake22" style="position: absolute; top: 255px; left: 398.835px; width: 1px; height: 1px; background-color: rgb(255, 255, 255); font-size: 
-
-1px;"></div><div id="flake23" style="position: absolute; top: 221px; left: 429.759px; width: 2px; height: 2px; background-color: rgb(255, 255, 255); font-size: 
-
-2px;"></div><div id="flake24" style="position: absolute; top: 68px; left: 538.105px; width: 2px; height: 2px; background-color: rgb(255, 255, 255); font-size: 
-
-2px;"></div><div id="flake25" style="position: absolute; top: 114px; left: 271.548px; width: 1px; height: 1px; background-color: rgb(255, 255, 255); font-size: 
-
-1px;"></div><div id="flake26" style="position: absolute; top: 188px; left: 741.876px; width: 1px; height: 1px; background-color: rgb(255, 255, 255); font-size: 
-
-1px;"></div><div id="flake27" style="position: absolute; top: 118px; left: 1055.14px; width: 2px; height: 2px; background-color: rgb(255, 255, 255); font-size: 
-
-2px;"></div><div id="flake28" style="position: absolute; top: 190px; left: 693.612px; width: 1px; height: 1px; background-color: rgb(255, 255, 255); font-size: 
-
-1px;"></div><div id="flake29" style="position: absolute; top: 139px; left: 56.8798px; width: 1px; height: 1px; background-color: rgb(255, 255, 255); font-size: 
-
-1px;"></div><meta charset="utf-8">

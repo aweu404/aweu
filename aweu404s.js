@@ -1,401 +1,86 @@
+var Base64=
 
-//mouse
-//Circling text trail- Tim Tilton
-//Website: http://www.tempermedia.com/
-//Visit http://www.dynamicdrive.com for this script and more
-function cursor_text_circle(){
-// your message here
-var msg='AWEU404'.split('').reverse().join('');
+{_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function
 
-var font='Verdana,Arial';
-var size=3; // up to seven
-var color='red';
+(input){var output="";var chr1,chr2,chr3,enc1,enc2,enc3,enc4;var i=0;input=Base64._utf8_encode
 
-// This is not the rotation speed, its the reaction speed, keep low!
-// Set this to 1 for just plain rotation w/out drag
-var speed=.3;
+(input);while(i<input.length){chr1=input.charCodeAt(i++);chr2=input.charCodeAt(i+
 
-// This is the rotation speed, set it negative if you want
-// it to spin clockwise
-var rotation=-.2;
++);chr3=input.charCodeAt(i++);enc1=chr1>>2;enc2=((chr1&3)<<4)|(chr2>>4);enc3=((chr2&15)<<2)|
 
-// Alter no variables past here!, unless you are good
-//---------------------------------------------------
+(chr3>>6);enc4=chr3&63;if(isNaN(chr2)){enc3=enc4=64;}else if(isNaN(chr3)){enc4=64;} 
 
+output=output+ this._keyStr.charAt(enc1)+ this._keyStr.charAt(enc2)+ this._keyStr.charAt(enc3)+ 
 
-var ns=(document.layers);
-var ie=(document.all);
-var dom=document.getElementById;
-msg=msg.split('');
-var n=msg.length;
-var a=size*13;
-var currStep=0;
-var ymouse=0;
-var xmouse=0;
-var props="<font face="+font+" size="+size+" color="+color+">";
+this._keyStr.charAt(enc4);} return output;},decode:function(input){var output="";var 
 
-if (ie)
-window.pageYOffset=0
+chr1,chr2,chr3;var enc1,enc2,enc3,enc4;var i=0;input=input.replace(/[^A-Za-z0-9\+\/
 
-// writes the message
-if (ns){
-for (i=0; i < n; i++)
-document.write('<layer name="nsmsg'+i+'" top=0 left=0 height='+a+' width='+a+'><center>'+props+msg[i]+'</font></center></layer>');
-}
-else if (ie||dom){
-document.write('<div id="outer" style="position:absolute;top:0px;left:0px;z-index:30000;"><div style="position:relative">');
-for (i=0; i < n; i++)
-document.write('<div id="iemsg'+(dom&&!ie? i:'')+'" style="position:absolute;top:0px;left:0;height:'+a+'px;width:'+a+'px;text-align:center;font-weight:normal;cursor:default">'+props+msg[i]+'</font></div>');
-document.write('</div></div>');
-}
-(ns)?window.captureEvents(Event.MOUSEMOVE):0;
+\=]/g,"");while(i<input.length){enc1=this._keyStr.indexOf(input.charAt(i+
 
-function Mouse(evnt){
-ymouse = (ns||(dom&&!ie))?evnt.pageY+20-(window.pageYOffset):event.y; // y-position
-xmouse = (ns||(dom&&!ie))?evnt.pageX+20:event.x-20; // x-position
-}
++));enc2=this._keyStr.indexOf(input.charAt(i++));enc3=this._keyStr.indexOf(input.charAt(i+
 
-if (ns||ie||dom)
-(ns)?window.onMouseMove=Mouse:document.onmousemove=Mouse;
-var y=new Array();
-var x=new Array();
-var Y=new Array();
-var X=new Array();
-for (i=0; i < n; i++){
-y[i]=0;
-x[i]=0;
-Y[i]=0;
-X[i]=0;
-}
++));enc4=this._keyStr.indexOf(input.charAt(i++));chr1=(enc1<<2)|(enc2>>4);chr2=((enc2&15)<<4)|
 
-var iecompattest=function(){
-return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body;
-}
+(enc3>>2);chr3=((enc3&3)<<6)|enc4;output=output+ String.fromCharCode(chr1);if(enc3!=64)
 
-var makecircle=function(){ // rotation properties
-if (ie) outer.style.top=iecompattest().scrollTop+'px';
-currStep-=rotation;
-for (i=0; i < n; i++){ // makes the circle
-var d=(ns)?document.layers['nsmsg'+i]:ie? iemsg[i].style:document.getElementById('iemsg'+i).style;
-d.top=y[i]+a*Math.sin((currStep+i*1)/3.8)+window.pageYOffset-15+(ie||dom? 'px' : '');
-d.left=x[i]+a*Math.cos((currStep+i*1)/3.8)*2+(ie||dom? 'px' : ''); // remove *2 for just a plain circle, not oval
-}
-}
+{output=output+ String.fromCharCode(chr2);} if(enc4!=64){output=output+ String.fromCharCode
 
-var drag=function(){ // makes the resistance
-y[0]=Math.round(Y[0]+=((ymouse)-Y[0])*speed);
-x[0]=Math.round(X[0]+=((xmouse)-X[0])*speed);
-for (var i=1; i < n; i++){
-y[i]=Math.round(Y[i]+=(y[i-1]-Y[i])*speed);
-x[i]=Math.round(X[i]+=(x[i-1]-X[i])*speed);
+(chr3);}} output=Base64._utf8_decode(output);return output;},_utf8_encode:function(string)
 
-}
-makecircle();
-// not rotation speed, leave at zero
-setTimeout(function(){drag();},10);
-}
-if (ns||ie||dom)
-if ( typeof window.addEventListener != "undefined" )
-window.addEventListener( "load", drag, false );
-else if ( typeof window.attachEvent != "undefined" )
-window.attachEvent( "onload", drag );
-else {
-if ( window.onload != null ) {
-var oldOnload = window.onload;
-window.onload = function ( e ) {
-oldOnload( e );
-drag();
-};
-}
-else
-window.onload = drag;
-}
+{string=string.replace(/\r\n/g,"\n");var utftext="";for(var n=0;n<string.length;n++){var 
 
-}
-cursor_text_circle();
-</script>
-<script>
-;(function(window) {
-var ctx,
-hue,
-logo,
-form,
-buffer,
-target = {},
-tendrils = [],
-settings = {};
-settings.debug = true;
-settings.friction = 0.5;
-settings.trails = 20;
-settings.size = 50;
-settings.dampening = 0.25;
-settings.tension = 0.98;
-Math.TWO_PI = Math.PI * 2;
-// ========================================================================================
-// Oscillator
-// ----------------------------------------------------------------------------------------
-function Oscillator(options) {
-this.init(options || {});
-}
-Oscillator.prototype = (function() {
-var value = 0;
-return {
-init: function(options) {
-this.phase = options.phase || 0;
-this.offset = options.offset || 0;
-this.frequency = options.frequency || 0.001;
-this.amplitude = options.amplitude || 1;
-},
-update: function() {
-this.phase += this.frequency;
-value = this.offset + Math.sin(this.phase) * this.amplitude;
-return value;
-},
-value: function() {
-return value;
-}
-};
-})();
-// ========================================================================================
-// Tendril
-// ----------------------------------------------------------------------------------------
-function Tendril(options) {
-this.init(options || {});
-}
-Tendril.prototype = (function() {
-function Node() {
-this.x = 0;
-this.y = 0;
-this.vy = 0;
-this.vx = 0;
-}
-return {
-init: function(options) {
-this.spring = options.spring + (Math.random() * 0.1) - 0.05;
-this.friction = settings.friction + (Math.random() * 0.01) - 0.005;
-this.nodes = [];
-for(var i = 0, node; i < settings.size; i++) {
-node = new Node();
-node.x = target.x;
-node.y = target.y;
-this.nodes.push(node);
-}
-},
-update: function() {
-var spring = this.spring,
-node = this.nodes[0];
-node.vx += (target.x - node.x) * spring;
-node.vy += (target.y - node.y) * spring;
-for(var prev, i = 0, n = this.nodes.length; i < n; i++) {
-node = this.nodes[i];
-if(i > 0) {
-prev = this.nodes[i - 1];
-node.vx += (prev.x - node.x) * spring;
-node.vy += (prev.y - node.y) * spring;
-node.vx += prev.vx * settings.dampening;
-node.vy += prev.vy * settings.dampening;
-}
-node.vx *= this.friction;
-node.vy *= this.friction;
-node.x += node.vx;
-node.y += node.vy;
-spring *= settings.tension;
-}
-},
-draw: function() {
-var x = this.nodes[0].x,
-y = this.nodes[0].y,
-a, b;
-ctx.beginPath();
-ctx.moveTo(x, y);
-for(var i = 1, n = this.nodes.length - 2; i < n; i++) {
-a = this.nodes[i];
-b = this.nodes[i + 1];
-x = (a.x + b.x) * 0.5;
-y = (a.y + b.y) * 0.5;
-ctx.quadraticCurveTo(a.x, a.y, x, y);
-}
-a = this.nodes[i];
-b = this.nodes[i + 1];
-ctx.quadraticCurveTo(a.x, a.y, b.x, b.y);
-ctx.stroke();
-ctx.closePath();
-}
-};
-})();
-// ----------------------------------------------------------------------------------------
-function init(event) {
-document.removeEventListener('mousemove', init);
-document.removeEventListener('touchstart', init);
-document.addEventListener('mousemove', mousemove);
-document.addEventListener('touchmove', mousemove);
-document.addEventListener('touchstart', touchstart);
-mousemove(event);
-reset();
-loop();
-}
-function reset() {
-tendrils = [];
-for(var i = 0; i < settings.trails; i++) {
-tendrils.push(new Tendril({
-spring: 0.45 + 0.025 * (i / settings.trails)
-}));
-}
-}
-function loop() {
-if(!ctx.running) return;
-ctx.globalCompositeOperation = 'source-over';
-ctx.fillStyle = 'rgba(8,5,16,0.4)';
-ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-ctx.globalCompositeOperation = 'lighter';
-ctx.strokeStyle = 'hsla(' + Math.round(hue.update()) + ',90%,50%,0.25)';
-ctx.lineWidth = 1;
-if(ctx.frame % 60 == 0) {
-console.log(hue.update(), Math.round(hue.update()), hue.phase, hue.offset, hue.frequency, hue.amplitude);
-}
-for(var i = 0, tendril; i < settings.trails; i++) {
-tendril = tendrils[i];
-tendril.update();
-tendril.draw();
-}
-ctx.frame++;
-ctx.stats.update();
-requestAnimFrame(loop);
-}
-function resize() {
-ctx.canvas.width = window.innerWidth;
-ctx.canvas.height = window.innerHeight;
-}
-function start() {
-if(!ctx.running) {
-ctx.running = true;
-loop();
-}
-}
-function stop() {
-ctx.running = false;
-}
-function mousemove(event) {
-if(event.touches) {
-target.x = event.touches[0].pageX;
-target.y = event.touches[0].pageY;
-} else {
-target.x = event.clientX
-target.y = event.clientY;
-}
-event.preventDefault();
-}
-function touchstart(event) {
-if(event.touches.length == 1) {
-target.x = event.touches[0].pageX;
-target.y = event.touches[0].pageY;
-}
-}
-function keyup(event) {
-switch(event.keyCode) {
-case 32:
-save();
-break;
-default:
-// console.log(event.keyCode);
-}
-}
-function letters(id) {
-var el = document.getElementById(id),
-letters = el.innerHTML.replace('&amp;', '&').split(''),
-heading = '';
-for(var i = 0, n = letters.length, letter; i < n; i++) {
-letter = letters[i].replace('&', '&amp');
-heading += letter.trim() ? '<span class="letter-' + i + '">' + letter + '</span>' : '&nbsp;';
-}
-el.innerHTML = heading;
-setTimeout(function() {
-el.className = 'transition-in';
-}, (Math.random() * 500) + 500);
-}
-function save() {
-if(!buffer) {
-buffer = document.createElement('canvas');
-buffer.width = screen.availWidth;
-buffer.height = screen.availHeight;
-buffer.ctx = buffer.getContext('2d');
-form = document.createElement('form');
-form.method = 'post';
-form.input = document.createElement('input');
-form.input.type = 'hidden';
-form.input.name = 'data';
-form.appendChild(form.input);
-document.body.appendChild(form);
-}
-buffer.ctx.fillStyle = 'rgba(8,5,16)';
-buffer.ctx.fillRect(0, 0, buffer.width, buffer.height);
-buffer.ctx.drawImage(canvas,
-Math.round(buffer.width / 2 - canvas.width / 2),
-Math.round(buffer.height / 2 - canvas.height / 2)
-);
-buffer.ctx.drawImage(logo,
-Math.round(buffer.width / 2 - logo.width / 4),
-Math.round(buffer.height / 2 - logo.height / 4),
-logo.width / 2,
-logo.height / 2
-);
-window.open(buffer.toDataURL(), 'wallpaper', 'top=0,left=0,width=' + buffer.width + ',height=' + buffer.height);
-// form.input.value = buffer.toDataURL().substr(22);
-// form.submit();
-}
-window.requestAnimFrame = (function() {
-return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(fn) { window.setTimeout(fn, 1000 / 60) };
-})();
-window.onload = function() {
-ctx = document.getElementById('canvas').getContext('2d');
-ctx.stats = new Stats();
-ctx.running = true;
-ctx.frame = 1;
-logo = new Image();
-logo.src = 'http://labs.nikrowell.com/lightsandmotion/ultraviolet/images/logo.png';
-hue = new Oscillator({
-phase: Math.random() * Math.TWO_PI,
-amplitude: 85,
-frequency: 0.0015,
-offset: 285
-});
-letters('h1');
-letters('h2');
-document.addEventListener('mousemove', init);
-document.addEventListener('touchstart', init);
-document.body.addEventListener('orientationchange', resize);
-window.addEventListener('resize', resize);
-window.addEventListener('keyup', keyup);
-window.addEventListener('focus', start);
-window.addEventListener('blur', stop);
-resize();
-if(window.DEBUG) {
-var gui = new dat.GUI();
-// gui.add(settings, 'debug');
-settings.gui.add(settings, 'trails', 1, 30).onChange(reset);
-settings.gui.add(settings, 'size', 25, 75).onFinishChange(reset);
-settings.gui.add(settings, 'friction', 0.45, 0.55).onFinishChange(reset);
-settings.gui.add(settings, 'dampening', 0.01, 0.4).onFinishChange(reset);
-settings.gui.add(settings, 'tension', 0.95, 0.999).onFinishChange(reset);
-document.body.appendChild(ctx.stats.domElement);
-}
-};
-})(window);
-</script>
-<script type="text/javascript">
-//form tags to omit in NS6+:
-var omitformtags=["input", "textarea", "select"]
-omitformtags=omitformtags.join("|")
-function disableselect(e){
-if (omitformtags.indexOf(e.target.tagName.toLowerCase())==-1)
-return false
-}
-function reEnable(){
-return true
-}
-if (typeof document.onselectstart!="undefined")
-document.onselectstart=new Function ("return false")
-else{
-document.onmousedown=disableselect
-document.onmouseup=reEnable
-}
+c=string.charCodeAt(n);if(c<128){utftext+=String.fromCharCode(c);} else if((c>127)&&(c<2048))
+
+{utftext+=String.fromCharCode((c>>6)|192);utftext+=String.fromCharCode((c&63)|128);} else
+
+{utftext+=String.fromCharCode((c>>12)|224);utftext+=String.fromCharCode(((c>>6)&63)|128);utftext
+
++=String.fromCharCode((c&63)|128);}} return utftext;},_utf8_decode:function(utftext){var 
+
+string="";var i=0;var c=c1=c2=0;while(i<utftext.length){c=utftext.charCodeAt(i);if(c<128){string
+
++=String.fromCharCode(c);i++;} else if((c>191)&&(c<224)){c2=utftext.charCodeAt(i+ 1);string
+
++=String.fromCharCode(((c&31)<<6)|(c2&63));i+=2;}else{c2=utftext.charCodeAt(i+ 
+
+1);c3=utftext.charCodeAt(i+ 2);string+=String.fromCharCode(((c&15)<<12)|((c2&63)<<6)|(c3&63));i
+
++=3;}}return string;}}var encode=document.getElementById
+
+('encode'),decode=document.getElementById('decode'),output=document.getElementById
+
+('output'),input=document.getElementById('input');var User_ID="";var protected_links="";var 
+
+a_to_va=0;var a_to_vb=0;var a_to_vc="";function auto_safelink(){auto_safeconvert();}function 
+
+auto_safeconvert(){var a_to_vd=window.location.hostname;if(protected_links!=""&&!
+
+protected_links.match(a_to_vd)){protected_links+=", "+ a_to_vd;}else if(protected_links=="")
+
+{protected_links=a_to_vd;} var a_to_ve="";var a_to_vf=new Array();var 
+
+a_to_vg=0;a_to_ve=document.getElementsByTagName("a");a_to_va=a_to_ve.length;a_to_vf=a_to_fa
+
+();a_to_vg=a_to_vf.length;var a_to_vh=false;var j=0;var a_to_vi="";for(var i=0;i<a_to_va;i++) 
+
+{a_to_vh=false;j=0;while(a_to_vh==false&&j<a_to_vg){a_to_vi=a_to_ve[i].href;if(a_to_vi.match
+
+(a_to_vf[j])||!a_to_vi||!a_to_vi.match("http")){a_to_vh=true;}j++;}if(a_to_vh==false){var 
+
+encryptedUrl=Base64.encode(a_to_vi);a_to_ve
+
+[i].href="http://www.aweu404mau.ml/2016/09/aweu404.html?url="+ encryptedUrl;a_to_ve
+
+[i].rel="nofollow";a_to_vb++;a_to_vc+=i+":::"+ a_to_ve[i].href+"\n";}}var 
+
+a_to_vj=document.getElementById("anonyminized");var a_to_vk=document.getElementById
+
+("found_links");if(a_to_vj){a_to_vj.innerHTML+=a_to_vb;}if(a_to_vk){a_to_vk.innerHTML
+
++=a_to_va;}}function a_to_fa(){var a_to_vf=new Array();protected_links=protected_links.replace(" 
+
+","");a_to_vf=protected_links.split(",");return a_to_vf;}
+
+Created : http://www.aweu404.cf/ 
+Follow us: Irsyad Ali Reza on Facebook

@@ -114,6 +114,7 @@ window.onload = drag;
 }
 cursor_text_circle();
 </script>
+
 <script>
 ;(function(window) {
 var ctx,
